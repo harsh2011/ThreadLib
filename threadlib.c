@@ -9,11 +9,6 @@
 #include <unistd.h> 
 #include <stdio.h>
 
-// PREDEFINED VARIABLES 
-// #define MAX_SIZE_QUEUE 3
-// #define MAX_THREADS 2
-// #define THREAD_STACK (1024*1024)
-
 //STRUCTURE OF FIBER CONTAINING NECESSARY DETAILS
 typedef struct
 {
@@ -306,45 +301,3 @@ int waitForAllThreads()// Non-preemptive threads.
 	
 	return 0;
 }
-
-
-// void fiber1()
-// {
-// 	int i;
-// 	for ( i = 0; i < 2; ++ i )
-// 	{
-// 		printf( "Hey, I'm fiber #1: %d\n", i );
-// 	}
-// 	return;
-// }
-
-// void fiber2()
-// {
-// 	int j;
-// 	for ( j = 0; j < 2; ++ j )
-// 	{
-// 		printf( "Hey, I'm fiber #2: %d\n", j );
-// 	}
-// 	return;
-// }
-
-
-
-// int main()
-// {
-// 	/* Initialize the fiber library */
-// 	initThreads();
-	
-// 	createThread(&fiber1);
-
-// 	createThread(&fiber2);
-
-// 	createThread(&fiber2);
-
- 
-// 	createThread(&fiber2);
-
-// 	waitForAllFibers();
-	
-// 	return 0;
-// }

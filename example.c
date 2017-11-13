@@ -30,8 +30,22 @@ void fibonacchi()
 		//fiberYield();
 	}
 }
+void openFile1(){
+	FILE *fp;
+	char ch;
+
+	fp = fopen("one.txt", "r");
+
+	while((ch = getc(fp)) != EOF){
+		printf("%c",ch);
+	}
+
+	fclose(fp); 
+}
+
+
 	
-void squares(int a)
+void squares()
 {
 	int i;
 	
@@ -51,16 +65,14 @@ int main()
 
 	int i,j;
 
-
-	/* Initialize the fiber library */
+	/* Initialize the library */
 	initThreads();
-
-
 	
-	/* Go fibers! */
+	/* Create Thread ! */
 	createThread( &fiber1 );
 	createThread( &fibonacchi );
-	createThread( &squares(3) );
+	createThread( &squares );
+	createThread( &openFile1 );
 
 	/* Since these are nonpre-emptive, we must allow them to run */
 	waitForAllThreads();

@@ -1,8 +1,6 @@
 #ifndef LIBFIBER_H
 #define LIBFIBER_H 1
 
-
-
 #define	T_NOERROR	0
 #define T_MAXFIBERS  1
 #define T_MAXQUEUE 6
