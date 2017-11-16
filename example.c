@@ -6,6 +6,7 @@
 void fiber1()
 {
 	int i;
+
 	for ( i = 0; i < 5; ++ i )
 	{
 		printf( "Hey, I'm fiber #1: %d\n", i );
@@ -30,21 +31,79 @@ void fibonacchi()
 		//fiberYield();
 	}
 }
-void openFile1(){
-	FILE *fp;
-	char ch;
 
-	fp = fopen("one.txt", "r");
 
-	while((ch = getc(fp)) != EOF){
-		printf("%c",ch);
+void readFile(){
+	FILE *fptr;
+    char filename[15];
+    char ch;
+    char * line = NULL;
+    size_t len = 0;
+    ssize_t read;
+    int value;
+
+	int add = 0;
+
+	int temp;
+
+	fptr = fopen("one.txt", "r");
+
+	if (fptr == NULL)
+	{
+		printf("Cannot open file \n");
+		exit(0);
+	}
+	while ((read = getline(&line, &len, fptr)) != -1) {
+		//printf("Retrieved line of length %zu :\n", read);
+		char var = line[0];
+		temp= (int)(var - '0');
+		printf("%d\n",temp);
+
+		add = add+temp;
+
+		
 	}
 
-	fclose(fp); 
+
+	printf("sum %d\n",add);
+	fclose(fptr);
 }
 
+void readFile1(){
+	FILE *fptr;
+    char filename[15];
+    char ch;
+    char * line = NULL;
+    size_t len = 0;
+    ssize_t read;
+    int value;
 
-	
+	int add = 0;
+
+	int temp;
+
+	fptr = fopen("two.txt", "r");
+
+	if (fptr == NULL)
+	{
+		printf("Cannot open file \n");
+		exit(0);
+	}
+	while ((read = getline(&line, &len, fptr)) != -1) {
+		//printf("Retrieved line of length %zu :\n", read);
+		char var = line[0];
+		temp= (int)(var - '0');
+		printf("%d\n",temp);
+
+		add = add+temp;
+
+		
+	}
+
+
+	printf("sum %d\n",add);
+	fclose(fptr);
+}	
 void squares()
 {
 	int i;
@@ -59,6 +118,10 @@ void squares()
 
 
 
+void fileread(){
+	int i;
+
+}
 
 int main()
 {
@@ -72,8 +135,8 @@ int main()
 	createThread( &fiber1 );
 	createThread( &fibonacchi );
 	createThread( &squares );
-	createThread( &openFile1 );
-
+	createThread( &readFile );
+	createThread( &readFile1 );
 	/* Since these are nonpre-emptive, we must allow them to run */
 	waitForAllThreads();
 	

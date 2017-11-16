@@ -9,8 +9,6 @@
 #define	T_INFIBER 4
 #define T_SIGNALERROR 5
 
-
-
 // PREDEFINED VARIABLES 
 #define MAX_SIZE_QUEUE 3
 #define MAX_THREADS 2
